@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+/* Global base styles */
+@layer base {
+  * {
+    @apply border-neutral-200;
+  }
+}
+
 html,
 body,
 :root {
