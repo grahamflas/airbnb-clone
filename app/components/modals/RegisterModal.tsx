@@ -23,8 +23,8 @@ const RegisterModal = () => {
     formState: { errors },
   } = useForm<FieldValues>({
     defaultValues: {
-      name: "",
       email: "",
+      name: "",
       password: "",
     },
   });
@@ -64,6 +64,25 @@ const RegisterModal = () => {
         label="Email"
         register={register}
         required
+      />
+
+      <Input
+        disabled={isLoading}
+        errors={errors}
+        id="name"
+        label="Name"
+        register={register}
+        required
+      />
+
+      <Input
+        disabled={isLoading}
+        errors={errors}
+        id="password"
+        label="Password"
+        register={register}
+        required
+        type="password"
       />
     </div>
   );
