@@ -2,6 +2,7 @@
 import { useState } from "react";
 
 import axios from "axios";
+import toast from "react-hot-toast";
 
 import { AiFillGithub } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
@@ -47,7 +48,9 @@ const RegisterModal = () => {
       await axios.post("/api/register", data);
       registerModal.onClose();
     } catch (error) {
-      console.log(error);
+      console.log("RegisterModal error:", error);
+
+      toast.error("Something went wrong");
     } finally {
       setIsLoading(false);
     }
