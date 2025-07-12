@@ -42,8 +42,8 @@ const Input = ({
         disabled={disabled}
         id={id}
         type={type}
-        {...register(id, { required })}
         placeholder=" "
+        {...register(id, { required })}
       />
 
       <label
