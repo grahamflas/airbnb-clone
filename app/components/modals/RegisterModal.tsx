@@ -8,6 +8,7 @@ import { AiFillGithub } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 
+import Button from "../Button";
 import Heading from "../Heading";
 import Input from "../inputs/Input";
 import Modal from "./Modal";
@@ -90,11 +91,45 @@ const RegisterModal = () => {
     </div>
   );
 
+  const footerContent = (
+    <div>
+      <div className="flex flex-col gap-4 mt-3">
+        <Button
+          icon={FcGoogle}
+          label="Continue with Google"
+          onClick={() => console.log("Continuing with Google")}
+          outline
+        />
+
+        <Button
+          icon={AiFillGithub}
+          label="Continue with Github"
+          onClick={() => console.log("Continuing with Github")}
+          outline
+        />
+      </div>
+
+      <div className="text-neutral-500 text-center mt-4 font-light">
+        <div className="flex flex-row justify-center gap-2">
+          <div>Already have an account?</div>
+
+          <button
+            className="text-neutral-800 cursor-pointer hover:underline"
+            onClick={registerModal.onClose}
+          >
+            Log in
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+
   return (
     <Modal
       actionLabel="Continue"
       body={bodyContent}
       disabled={isLoading}
+      footer={footerContent}
       isOpen={registerModal.isOpen}
       onClose={registerModal.onClose}
       onSubmit={handleSubmit(onSubmit)}
