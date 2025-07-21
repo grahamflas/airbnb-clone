@@ -1,11 +1,16 @@
 "use client";
 
+import { User } from "@/app/generated/prisma";
 import Container from "../Container";
 import Logo from "./Logo";
 import Search from "./Search";
 import UserMenu from "./UserMenu";
 
-const Navbar = () => {
+interface Props {
+  currentUser?: User | null;
+}
+
+const Navbar = ({ currentUser }: Props) => {
   return (
     <div className="fixed w-full bg-white z-10 shadow-sm">
       <div className="py-4 border-b-[1px]">
@@ -15,7 +20,7 @@ const Navbar = () => {
 
             <Search />
 
-            <UserMenu />
+            <UserMenu currentUser={currentUser} />
           </div>
         </Container>
       </div>
