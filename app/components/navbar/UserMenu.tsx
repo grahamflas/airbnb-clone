@@ -45,7 +45,7 @@ const UserMenu = ({ currentUser }: Props) => {
           <AiOutlineMenu />
 
           <div className="hidden md:inline">
-            <Avatar />
+            <Avatar src={currentUser?.image} />
           </div>
         </div>
       </div>
