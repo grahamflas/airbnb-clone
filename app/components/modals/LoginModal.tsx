@@ -100,14 +100,14 @@ const LoginModal = () => {
         <Button
           icon={FcGoogle}
           label="Continue with Google"
-          onClick={() => console.log("Continuing with Google")}
+          onClick={() => signIn("google")}
           outline
         />
 
         <Button
           icon={AiFillGithub}
           label="Continue with Github"
-          onClick={() => console.log("Continuing with Github")}
+          onClick={() => signIn("github")}
           outline
         />
       </div>

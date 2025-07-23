@@ -2,6 +2,7 @@
 import { useState } from "react";
 
 import axios from "axios";
+import { signIn } from "next-auth/react";
 import toast from "react-hot-toast";
 
 import { AiFillGithub } from "react-icons/ai";
@@ -97,14 +98,14 @@ const RegisterModal = () => {
         <Button
           icon={FcGoogle}
           label="Continue with Google"
-          onClick={() => console.log("Continuing with Google")}
+          onClick={() => signIn("google")}
           outline
         />
 
         <Button
           icon={AiFillGithub}
           label="Continue with Github"
-          onClick={() => console.log("Continuing with Github")}
+          onClick={() => signIn("github")}
           outline
         />
       </div>
