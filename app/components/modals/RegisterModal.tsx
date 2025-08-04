@@ -14,10 +14,13 @@ import Heading from "../Heading";
 import Input from "../inputs/Input";
 import Modal from "./Modal";
 
+import useLoginModal from "@/app/hooks/useLoginModal";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 
 const RegisterModal = () => {
+  const loginModal = useLoginModal();
   const registerModal = useRegisterModal();
+
   const [isLoading, setIsLoading] = useState(false);
 
   const {
@@ -92,6 +95,11 @@ const RegisterModal = () => {
     </div>
   );
 
+  const toggleLoginAndRegisterModal = () => {
+    registerModal.onClose();
+    loginModal.onOpen();
+  };
+
   const footerContent = (
     <div>
       <div className="flex flex-col gap-4 mt-3">
@@ -116,7 +124,7 @@ const RegisterModal = () => {
 
           <button
             className="text-neutral-800 cursor-pointer hover:underline"
-            onClick={registerModal.onClose}
+            onClick={toggleLoginAndRegisterModal}
           >
             Log in
           </button>

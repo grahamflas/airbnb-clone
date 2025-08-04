@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
 
-import axios from "axios";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import toast from "react-hot-toast";
@@ -94,6 +93,11 @@ const LoginModal = () => {
     </div>
   );
 
+  const toggleLoginAndRegisterModal = () => {
+    loginModal.onClose();
+    registerModal.onOpen();
+  };
+
   const footerContent = (
     <div>
       <div className="flex flex-col gap-4 mt-3">
@@ -114,13 +118,13 @@ const LoginModal = () => {
 
       <div className="text-neutral-500 text-center mt-4 font-light">
         <div className="flex flex-row justify-center gap-2">
-          <div>Already have an account?</div>
+          <div>First time using Airbnb?</div>
 
           <button
             className="text-neutral-800 cursor-pointer hover:underline"
-            onClick={registerModal.onClose}
+            onClick={toggleLoginAndRegisterModal}
           >
-            Log in
+            Create an account
           </button>
         </div>
       </div>
