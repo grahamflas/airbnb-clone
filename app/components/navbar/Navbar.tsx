@@ -1,5 +1,6 @@
 "use client";
 
+import Categories from "./Categories";
 import Container from "../Container";
 import Logo from "./Logo";
 import Search from "./Search";
@@ -24,6 +25,8 @@ const Navbar = ({ currentUser }: Props) => {
           </div>
         </Container>
       </div>
+
+      <Categories />
     </div>
   );
 };
