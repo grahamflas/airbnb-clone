@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { FieldValues, useForm } from "react-hook-form";
 
 import CategoryInput from "../inputs/CategoryInput";
+import CountrySelect from "../inputs/CountrySelect";
 import Heading from "../Heading";
 import Modal from "./Modal";
 
@@ -47,6 +48,7 @@ const RentModal = () => {
   });
 
   const watchedCategory = watch("category");
+  const watchedLocation = watch("location");
 
   const setCustomValue = (id: string, value: any) => {
     setValue(id, value, {
@@ -80,7 +82,7 @@ const RentModal = () => {
     return "Back";
   }, [step]);
 
-  let bodyConent = (
+  let bodyContent = (
     <div className="flex flex-col gap-8">
       <Heading
         title="Which of these best describes your place?"
@@ -104,13 +106,31 @@ const RentModal = () => {
     </div>
   );
 
+  if (step === STEPS.LOCATION) {
+    bodyContent = (
+      <div className="flex flex-col gap-8">
+        <Heading
+          title="Where is your place located?"
+          subtitle="Help guests find you"
+        />
+
+        <CountrySelect
+          onChange={function (selectedLocation) {
+            setCustomValue("location", selectedLocation);
+          }}
+          value={watchedLocation}
+        />
+      </div>
+    );
+  }
+
   return (
     <Modal
       actionLabel={actionLabel}
-      body={bodyConent}
+      body={bodyContent}
       isOpen={rentModal.isOpen}
       onClose={rentModal.onClose}
-      onSubmit={rentModal.onClose}
+      onSubmit={onNext}
       secondaryActionLabel={secondaryActionLabel}
       secondaryAction={step === STEPS.CATEGORY ? undefined : onBack}
       title="Airbnb your home!"
