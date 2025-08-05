@@ -11,6 +11,7 @@ import MenuItem from "./MenuItem";
 
 import useLoginModal from "@/app/hooks/useLoginModal";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
+import useRentModal from "@/app/hooks/useRentModal";
 
 import { SafeUser } from "@/app/types";
 
@@ -27,13 +28,22 @@ const UserMenu = ({ currentUser }: Props) => {
 
   const loginModal = useLoginModal();
   const registerModal = useRegisterModal();
+  const rentModal = useRentModal();
+
+  const onRent = () => {
+    if (!currentUser) {
+      return loginModal.onOpen();
+    }
+
+    rentModal.onOpen();
+  };
 
   return (
     <div className="relative">
       <div className="flex flex-row items-center gap-3">
         <div
           className="hidden md:block text-sm font-semibold py-3 px-4 rounded-full hover:bg-neutral-100 transition cursor-pointer"
-          onClick={() => console.log("Airbnb your home clicked")}
+          onClick={onRent}
         >
           Airbnb your home
         </div>
@@ -68,10 +78,7 @@ const UserMenu = ({ currentUser }: Props) => {
                   label="My properties"
                   onClick={() => console.log("My properties clicked")}
                 />
-                <MenuItem
-                  label="Airbnb my home"
-                  onClick={() => console.log("Airbnb my home clicked")}
-                />
+                <MenuItem label="Airbnb my home" onClick={onRent} />
                 <hr />
                 <MenuItem label="Logout" onClick={() => signOut()} />
               </>

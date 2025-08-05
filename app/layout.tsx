@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
 
+import { Toaster } from "react-hot-toast";
+
+import LoginModal from "./components/modals/LoginModal";
 import Navbar from "./components/navbar/Navbar";
+import RegisterModal from "./components/modals/RegisterModal";
+import RentModal from "./components/modals/RentModal";
+
+import getCurrentUser from "./actions/getCurrentUser";
 
 import "./globals.css";
-import RegisterModal from "./components/modals/RegisterModal";
-import { Toaster } from "react-hot-toast";
-import LoginModal from "./components/modals/LoginModal";
-import getCurrentUser from "./actions/getCurrentUser";
 
 const font = Nunito({
   subsets: ["latin"],
@@ -33,6 +36,8 @@ export default async function RootLayout({
         <LoginModal />
 
         <RegisterModal />
+
+        <RentModal />
 
         <Navbar currentUser={currentUser} />
 
