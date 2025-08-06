@@ -11,6 +11,7 @@ import Modal from "./Modal";
 import useRentModal from "@/app/hooks/useRentModal";
 
 import { categories } from "../navbar/Categories";
+import dynamic from "next/dynamic";
 
 enum STEPS {
   CATEGORY = 0,
@@ -49,6 +50,11 @@ const RentModal = () => {
 
   const watchedCategory = watch("category");
   const watchedLocation = watch("location");
+
+  const Map = useMemo(
+    () => dynamic(() => import("../Map"), { ssr: false }),
+    [watchedLocation]
+  );
 
   const setCustomValue = (id: string, value: any) => {
     setValue(id, value, {
@@ -120,6 +126,8 @@ const RentModal = () => {
           }}
           value={watchedLocation}
         />
+
+        <Map center={watchedLocation?.latlng} />
       </div>
     );
   }
