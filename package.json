@@ -16,6 +16,7 @@
     "leaflet": "^1.9.4",
     "next": "15.3.5",
     "next-auth": "^4.24.11",
+    "next-cloudinary": "^6.16.0",
     "query-string": "^9.2.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
