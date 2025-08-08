@@ -1,7 +1,10 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { FieldValues, useForm } from "react-hook-form";
+
+import axios from "axios";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
 
 import CategoryInput from "../inputs/CategoryInput";
 import Counter from "../inputs/Counter";
@@ -15,6 +18,7 @@ import { categories } from "../navbar/Categories";
 import dynamic from "next/dynamic";
 import ImageUpload from "../inputs/ImageUpload";
 import Input from "../inputs/Input";
+import toast from "react-hot-toast";
 
 enum STEPS {
   CATEGORY = 0,
@@ -30,6 +34,7 @@ const RentModal = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const rentModal = useRentModal();
+  const router = useRouter();
 
   const {
     register,
@@ -78,6 +83,32 @@ const RentModal = () => {
 
   const onNext = () => {
     setStep((step) => step + 1);
+  };
+
+  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+    if (step !== STEPS.PRICE) {
+      return onNext();
+    }
+
+    setIsLoading(true);
+
+    try {
+      await axios.post("/api/listings", data);
+
+      toast.success("Listing created");
+
+      router.refresh();
+
+      reset();
+
+      setStep(STEPS.CATEGORY);
+
+      rentModal.onClose();
+    } catch (error) {
+      toast.error("Something went wrong");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const actionLabel = useMemo(() => {
@@ -257,7 +288,7 @@ const RentModal = () => {
       body={bodyContent}
       isOpen={rentModal.isOpen}
       onClose={rentModal.onClose}
-      onSubmit={onNext}
+      onSubmit={handleSubmit(onSubmit)}
       secondaryActionLabel={secondaryActionLabel}
       secondaryAction={step === STEPS.CATEGORY ? undefined : onBack}
       title="Airbnb your home!"
