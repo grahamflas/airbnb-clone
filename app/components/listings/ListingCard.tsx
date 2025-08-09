@@ -16,8 +16,8 @@ interface Props {
   actionId?: string;
   actionLabel?: string;
   currentUser?: SafeUser | null;
-  data: Listing;
   disabled?: boolean;
+  listing: Listing;
   onAction?: (id: string) => void;
   reservation?: Reservation;
 }
@@ -26,15 +26,15 @@ const ListingCard = ({
   actionId = "",
   actionLabel,
   currentUser,
-  data,
   disabled,
+  listing,
   onAction,
   reservation,
 }: Props) => {
   const router = useRouter();
   const { getByValue } = useCountries();
 
-  const location = getByValue(data.locationValue);
+  const location = getByValue(listing.locationValue);
 
   const handleCancel = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
@@ -51,7 +51,7 @@ const ListingCard = ({
       return reservation.totalPrice;
     }
 
-    return data.price;
+    return listing.price;
   };
 
   const reservationDate = () => {
@@ -68,7 +68,7 @@ const ListingCard = ({
   return (
     <div
       className="col-span-1 cursor-pointer group"
-      onClick={() => router.push(`/listings/${data.id}`)}
+      onClick={() => router.push(`/listings/${listing.id}`)}
     >
       <div className="flex flex-col gap-2 w-full">
         <div className="aspect-square w-full relative overflow-hidden rounded-xl">
@@ -76,11 +76,11 @@ const ListingCard = ({
             fill
             alt="Listing"
             className="object-cover h-full w-full group-hover:scale-110 transition"
-            src={data.imageSrc}
+            src={listing.imageSrc}
           />
 
           <div className="absolute top-3 right-3">
-            <HeartButton currentUser={currentUser} listingId={data.id} />
+            <HeartButton currentUser={currentUser} listingId={listing.id} />
           </div>
         </div>
 
@@ -89,7 +89,7 @@ const ListingCard = ({
         </div>
 
         <div className="font-light text-neutral-500">
-          {reservationDate() || data.category}
+          {reservationDate() || listing.category}
         </div>
 
         <div className="flex flex-row items-center gap-1">
