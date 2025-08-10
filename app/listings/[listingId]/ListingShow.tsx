@@ -63,7 +63,7 @@ const ListingShow = ({ currentUser, listing, reservations = [] }: Props) => {
   const [totalPrice, setTotalPrice] = useState(listing.price);
   const [dateRange, setDateRange] = useState<Range>(initialDateRange);
 
-  const onCreateReservations = async (): void => {
+  const onCreateReservations = async (): Promise<void> => {
     if (!currentUser) {
       return loginModal.onOpen();
     }
@@ -72,9 +72,10 @@ const ListingShow = ({ currentUser, listing, reservations = [] }: Props) => {
 
     try {
       await axios.post("/api/reservations", {
-        totalPrice,
-        startDate: dateRange.startDate,
         endDate: dateRange.endDate,
+        listingId: listing.id,
+        startDate: dateRange.startDate,
+        totalPrice,
       });
 
       toast.success("Listing reserved!");
