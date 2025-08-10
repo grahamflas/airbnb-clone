@@ -29,6 +29,9 @@
     "world-countries": "^5.1.0",
     "zustand": "^5.0.6"
   },
+  "prisma": {
+    "seed": "ts-node prisma/seeds.ts"
+  },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
@@ -41,6 +44,7 @@
     "eslint-config-next": "15.3.5",
     "prisma": "^6.12.0",
     "tailwindcss": "^4",
+    "ts-node": "^10.9.2",
     "typescript": "^5"
   }
 }
