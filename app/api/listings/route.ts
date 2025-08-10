@@ -25,7 +25,7 @@ export async function POST(request: Request) {
     description,
   } = body;
 
-  const listing = await prisma.listing.create({
+  const newListing = {
     data: {
       category,
       locationValue: location.value,
@@ -38,7 +38,9 @@ export async function POST(request: Request) {
       userId: currentUser.id,
       description,
     }
-  })
+  }
+
+  const listing = await prisma.listing.create(newListing);
 
   return NextResponse.json(listing);
 }
