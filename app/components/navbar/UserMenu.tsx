@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 
+import { useRouter } from "next/navigation";
+
 import { signOut } from "next-auth/react";
 
 import { AiOutlineMenu } from "react-icons/ai";
@@ -29,6 +31,8 @@ const UserMenu = ({ currentUser }: Props) => {
   const loginModal = useLoginModal();
   const registerModal = useRegisterModal();
   const rentModal = useRentModal();
+
+  const router = useRouter();
 
   const onRent = () => {
     if (!currentUser) {
@@ -67,7 +71,7 @@ const UserMenu = ({ currentUser }: Props) => {
               <>
                 <MenuItem
                   label="My trips"
-                  onClick={() => console.log("My trips clicked")}
+                  onClick={() => router.push("/trips")}
                 />
 
                 <MenuItem
