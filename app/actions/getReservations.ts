@@ -1,5 +1,7 @@
 import prisma from "@/app/libs/prismadb"
 
+import { ReservationWithListing } from "../trips/TripsClient";
+
 interface Params {
   hostId?: string;
   listingId?: string;
@@ -14,7 +16,7 @@ export default async function getReservations({
   hostId,
   listingId,
   userId,
-}: Params) {
+}: Params): Promise<ReservationWithListing[]> {
   try {
     const query: Query = {};
 

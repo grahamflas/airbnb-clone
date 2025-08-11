@@ -25,6 +25,7 @@ export async function DELETE(
   }
 
   // [TODO]: test to see what happens if I try to delete a reservation that isn't mine
+  //         and for which I'm not the host
   const reservation = await prisma.reservation.deleteMany({
     where: {
       id: reservationId,

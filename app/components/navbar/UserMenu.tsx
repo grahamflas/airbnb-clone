@@ -78,12 +78,21 @@ const UserMenu = ({ currentUser }: Props) => {
                   label="My favorites"
                   onClick={() => console.log("My favorites clicked")}
                 />
+
+                <MenuItem
+                  label="My reservations"
+                  onClick={() => router.push("/reservations")}
+                />
+
                 <MenuItem
                   label="My properties"
                   onClick={() => console.log("My properties clicked")}
                 />
+
                 <MenuItem label="Airbnb my home" onClick={onRent} />
+
                 <hr />
+
                 <MenuItem label="Logout" onClick={() => signOut()} />
               </>
             ) : (
