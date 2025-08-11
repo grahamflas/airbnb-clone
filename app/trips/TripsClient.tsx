@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 import axios from "axios";
+import toast from "react-hot-toast";
 
 import Container from "../components/Container";
 import Heading from "../components/Heading";
@@ -12,7 +13,6 @@ import ListingCard from "../components/listings/ListingCard";
 
 import { Listing, Reservation } from "../generated/prisma";
 import { SafeUser } from "../types";
-import toast from "react-hot-toast";
 
 export type ReservationWithListing = Reservation & {
   listing: Listing;
@@ -51,10 +51,7 @@ const TripsClient = ({ currentUser, reservations }: Props) => {
         subtitle="Where you've been and where you're going"
       />
 
-      <div
-        onClick={() => onCancel("hi")}
-        className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-8"
-      >
+      <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-8">
         {reservations.map((reservation) => {
           return (
             <ListingCard
