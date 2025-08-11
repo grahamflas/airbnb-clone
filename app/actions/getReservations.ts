@@ -1,7 +1,7 @@
 import prisma from "@/app/libs/prismadb"
 
 interface Params {
-  authorId?: string;
+  hostId?: string;
   listingId?: string;
   userId?: string;
 }
@@ -11,15 +11,15 @@ interface Query {
 }
 
 export default async function getReservations({
-  authorId,
+  hostId,
   listingId,
   userId,
 }: Params) {
   try {
     const query: Query = {};
 
-    if (authorId) {
-      query.listing = { userId: authorId}
+    if (hostId) {
+      query.listing = { userId: hostId}
     }
 
     if (listingId) {
