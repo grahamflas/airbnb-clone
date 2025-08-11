@@ -1,5 +1,5 @@
 import EmptyState from "@/app/components/EmptyState";
-import ListingShow from "./ListingShow";
+import ListingShow from "./ListingClient";
 
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import getListingById from "@/app/actions/getListingById";

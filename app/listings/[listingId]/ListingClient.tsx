@@ -36,8 +36,7 @@ interface Props {
   reservations?: Reservation[];
 }
 
-// called ListingClient in docs
-const ListingShow = ({ currentUser, listing, reservations = [] }: Props) => {
+const ListingClient = ({ currentUser, listing, reservations = [] }: Props) => {
   const loginModal = useLoginModal();
   const router = useRouter();
   const disabledDates = useMemo(() => {
@@ -148,4 +147,4 @@ const ListingShow = ({ currentUser, listing, reservations = [] }: Props) => {
   );
 };
 
-export default ListingShow;
+export default ListingClient;
