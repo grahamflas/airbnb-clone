@@ -98,7 +98,12 @@ const ListingCard = ({
         </div>
 
         {onAction && actionLabel && (
-          <Button disabled small label={actionLabel} onClick={handleCancel} />
+          <Button
+            disabled={disabled}
+            small
+            label={actionLabel}
+            onClick={handleCancel}
+          />
         )}
       </div>
     </div>
