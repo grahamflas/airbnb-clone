@@ -114,23 +114,25 @@ const Categories = () => {
 
   const isMainPage = pathname === "/";
 
-  return (
-    <Container>
-      <div className="pt-4 flex flex-row items-center justify-between overflow-x-auto">
-        {categories.map((category) => {
-          return (
-            <CategoryBox
-              description={category.description}
-              icon={category.icon}
-              key={category.label}
-              label={category.label}
-              selected={category.label === categoryParam}
-            />
-          );
-        })}
-      </div>
-    </Container>
-  );
+  if (isMainPage) {
+    return (
+      <Container>
+        <div className="pt-4 flex flex-row items-center justify-between overflow-x-auto">
+          {categories.map((category) => {
+            return (
+              <CategoryBox
+                description={category.description}
+                icon={category.icon}
+                key={category.label}
+                label={category.label}
+                selected={category.label === categoryParam}
+              />
+            );
+          })}
+        </div>
+      </Container>
+    );
+  }
 };
 
 export default Categories;
