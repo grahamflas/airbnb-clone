@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import { useRouter } from "next/navigation";
 
-import axios, { AxiosError } from "axios";
+import axios from "axios";
 
 import Container from "../components/Container";
 import Heading from "../components/Heading";
@@ -26,10 +26,10 @@ interface Props {
 const TripsClient = ({ currentUser, reservations }: Props) => {
   const router = useRouter();
 
-  const [deletingId, setDeletingId] = useState("");
+  const [reservationToCancelId, setReservationToCancelId] = useState("");
 
   const onCancel = async (id: string) => {
-    setDeletingId(id);
+    setReservationToCancelId(id);
 
     try {
       await axios.delete(`/api/reservations/${id}`);
@@ -40,7 +40,7 @@ const TripsClient = ({ currentUser, reservations }: Props) => {
     } catch (error) {
       toast.error(error?.response?.data?.error);
     } finally {
-      setDeletingId("");
+      setReservationToCancelId("");
     }
   };
 
@@ -62,7 +62,7 @@ const TripsClient = ({ currentUser, reservations }: Props) => {
               actionLabel="Cancel reservation"
               onAction={onCancel}
               currentUser={currentUser}
-              disabled={deletingId === reservation.id}
+              disabled={reservationToCancelId === reservation.id}
               key={reservation.id}
               listing={reservation.listing}
               reservation={reservation}
