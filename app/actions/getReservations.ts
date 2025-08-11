@@ -36,7 +36,7 @@ export default async function getReservations({
         listing: true,
       },
       orderBy: {
-        createdAt: "desc",
+        startDate: "asc",
       }
     });
 
