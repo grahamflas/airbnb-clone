@@ -81,8 +81,7 @@ const ListingClient = ({ currentUser, listing, reservations = [] }: Props) => {
 
       setDateRange(initialDateRange);
 
-      // [TODO] redirect to trips
-      router.push("/");
+      router.push("/trips");
     } catch (error) {
       toast.error("Something when wrong");
       console.log(error);
