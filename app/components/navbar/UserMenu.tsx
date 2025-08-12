@@ -76,7 +76,7 @@ const UserMenu = ({ currentUser }: Props) => {
 
                 <MenuItem
                   label="My favorites"
-                  onClick={() => console.log("My favorites clicked")}
+                  onClick={() => router.push("/favorites")}
                 />
 
                 <MenuItem

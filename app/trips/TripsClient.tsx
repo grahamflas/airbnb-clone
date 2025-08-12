@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import { useRouter } from "next/navigation";
 
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import toast from "react-hot-toast";
 
 import Container from "../components/Container";
@@ -37,8 +37,13 @@ const TripsClient = ({ currentUser, reservations }: Props) => {
       toast.success("Reservation cancelled");
 
       router.refresh();
-    } catch (error) {
-      toast.error(error?.response?.data?.error);
+    } catch (error: AxiosError | unknown) {
+      if (error instanceof AxiosError) {
+        toast.error(error?.response?.data.error);
+      }
+
+      toast.error("Something went wrong");
+      console.log("Error", error);
     } finally {
       setReservationToCancelId("");
     }
