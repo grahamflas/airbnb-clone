@@ -8,7 +8,7 @@ interface Params {
   userId?: string;
 }
 
-interface Query {
+export interface Query {
   [key: string]: string | Query;
 }
 

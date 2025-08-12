@@ -3,13 +3,17 @@ import ListingCard from "./components/listings/ListingCard";
 import EmptyState from "./components/EmptyState";
 
 import getCurrentUser from "./actions/getCurrentUser";
-import getListings from "./actions/getListings";
+import getListings, { IListingsParams } from "./actions/getListings";
 import { Listing } from "./generated/prisma";
 import { SafeUser } from "./types";
 
-export default async function Home() {
+interface Params {
+  searchParams: IListingsParams;
+}
+
+export default async function Home({ searchParams }: Params) {
   const currentUser: SafeUser | null = await getCurrentUser();
-  const listings: Listing[] = await getListings();
+  const listings: Listing[] = await getListings(searchParams);
 
   if (listings.length === 0) {
     return <EmptyState showReset />;

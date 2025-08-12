@@ -86,7 +86,7 @@ const UserMenu = ({ currentUser }: Props) => {
 
                 <MenuItem
                   label="My properties"
-                  onClick={() => console.log("My properties clicked")}
+                  onClick={() => router.push("/properties")}
                 />
 
                 <MenuItem label="Airbnb my home" onClick={onRent} />
