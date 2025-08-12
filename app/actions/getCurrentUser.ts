@@ -2,6 +2,7 @@ import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { getServerSession } from "next-auth";
 
 import prisma from "@/app/libs/prismadb"
+import { SafeUser } from "../types";
 
 export const getSession = async () => {
   // pass the NextAuth config (providers, adapters, session strategy)
@@ -12,7 +13,7 @@ export const getSession = async () => {
   return await getServerSession(authOptions);
 }
 
-const getCurrentUser = async () => {
+const getCurrentUser = async (): Promise<SafeUser | null> => {
   try {
     const session = await getSession();
 
@@ -38,8 +39,7 @@ const getCurrentUser = async () => {
       emailVerified: currentUser.emailVerified?.toISOString() || null,
     };
 
-  } catch (error: any) {
-
+  } catch (error: unknown) {
     console.log(error)
     return null;
   }
