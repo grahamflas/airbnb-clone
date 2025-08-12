@@ -11,3 +11,19 @@ export type SafeUser = Omit<
   updatedAt: string;
 }
 
+export type CategoryLabel =
+  "Arctic" |
+  "Barns" |
+  "Beach" |
+  "Camping" |
+  "Castle" |
+  "Cave" |
+  "Countryside" |
+  "Desert" |
+  "Islands" |
+  "Lake" |
+  "Lux" |
+  "Modern" |
+  "Pools" |
+  "Skiing" |
+  "Windmills";

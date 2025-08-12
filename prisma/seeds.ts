@@ -1,8 +1,15 @@
+import { Listing } from "@/app/generated/prisma";
+import { CategoryLabel } from "@/app/types";
+
 const { PrismaClient } = require("../app/generated/prisma");
 
 const prisma = new PrismaClient();
 
-const listings = [
+type ListingData = Omit<Listing, "id" | "createdAt"> & {
+  category: CategoryLabel;
+};
+
+const listings: ListingData[] = [
   {
     category: "Beach",
     locationValue: "CR",  // Costa Rica
@@ -127,6 +134,8 @@ const listings = [
 
 async function run() {
   try {
+    await prisma.listing.deleteMany();
+
     await prisma.listing.createMany({
       data: listings,
     });

@@ -22,11 +22,12 @@ import CategoryBox from "../CategoryBox";
 import Container from "../Container";
 
 import type { IconType } from "react-icons";
+import { CategoryLabel } from "@/app/types";
 
 export interface Category {
   description: string;
   icon: IconType;
-  label: string;
+  label: CategoryLabel;
 }
 
 export const categories: Category[] = [
