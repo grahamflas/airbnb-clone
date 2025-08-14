@@ -9,15 +9,18 @@ interface Params {
 }
 
 export interface Query {
-  [key: string]: string | Query;
+  [key: string]: number | string | Query;
 }
 
-export default async function getReservations({
-  hostId,
-  listingId,
-  userId,
-}: Params): Promise<ReservationWithListing[]> {
+export default async function getReservations(params: Params): Promise<ReservationWithListing[]> {
   try {
+
+    const {
+      hostId,
+      listingId,
+      userId,
+    } = await params;
+
     const query: Query = {};
 
     if (hostId) {
