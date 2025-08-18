@@ -10,7 +10,7 @@ interface Params {
 // [TODO]: dry out these end points
 export async function POST(
   request: Request,
-  context: { params: { listingId: string } }
+  { params }: { params: Promise<{ listingId: string }> }
 ) {
   const currentUser = await getCurrentUser();
 
@@ -18,7 +18,7 @@ export async function POST(
     return NextResponse.error();
   }
 
-  const { listingId } = context.params;
+  const { listingId } = await params;
 
   if (!listingId || typeof listingId !== "string") {
     throw new Error("Invalid listingId");
@@ -38,7 +38,7 @@ export async function POST(
 
 export async function DELETE(
   request: Request,
-  { params }: { params: Params }
+  { params }: { params: Promise<{ listingId: string }> }
 ) {
   const currentUser = await getCurrentUser();
 
