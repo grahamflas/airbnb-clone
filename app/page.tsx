@@ -10,10 +10,10 @@ import { SafeUser } from "./types";
 export default async function Home({
   searchParams,
 }: {
-  searchParams: IListingsParams;
+  searchParams: Promise<IListingsParams>;
 }) {
   const currentUser: SafeUser | null = await getCurrentUser();
-  const listings: Listing[] = await getListings(searchParams);
+  const listings: Listing[] = await getListings(await searchParams);
 
   if (listings.length === 0) {
     return <EmptyState showReset />;
