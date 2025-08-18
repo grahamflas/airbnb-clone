@@ -1,5 +1,5 @@
 import EmptyState from "@/app/components/EmptyState";
-import ListingShow from "./ListingClient";
+import ListingClient from "./ListingClient";
 
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import getListingById from "@/app/actions/getListingById";
@@ -9,17 +9,17 @@ interface Params {
   listingId?: string;
 }
 
-const ListingPage = async ({ params }: { params: Params }) => {
+const ListingPage = async ({ params }: { params: Promise<Params> }) => {
   const currentUser = await getCurrentUser();
-  const listing = await getListingById(params);
-  const reservations = await getReservations(params);
+  const listing = await getListingById(await params);
+  const reservations = await getReservations(await params);
 
   if (!listing) {
     return <EmptyState />;
   }
 
   return (
-    <ListingShow
+    <ListingClient
       currentUser={currentUser}
       listing={listing}
       reservations={reservations}

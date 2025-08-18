@@ -14,7 +14,7 @@ import ListingInfo from "@/app/components/listings/ListingInfo";
 import ListingReservation from "@/app/components/listings/ListingReservation";
 
 import type { Category } from "@/app/components/navbar/Categories";
-import type { Listing, Reservation } from "@/app/generated/prisma";
+import type { Listing, Reservation, User } from "@/app/generated/prisma";
 import { Range } from "react-date-range";
 import { SafeUser } from "@/app/types";
 
@@ -31,7 +31,7 @@ const initialDateRange = {
 interface Props {
   currentUser: SafeUser | null;
   listing: Listing & {
-    user: SafeUser;
+    user: User;
   };
   reservations?: Reservation[];
 }
