@@ -7,11 +7,11 @@ import getListings, { IListingsParams } from "./actions/getListings";
 import { Listing } from "./generated/prisma";
 import { SafeUser } from "./types";
 
-interface Params {
+export default async function Home({
+  searchParams,
+}: {
   searchParams: IListingsParams;
-}
-
-export default async function Home({ searchParams }: Params) {
+}) {
   const currentUser: SafeUser | null = await getCurrentUser();
   const listings: Listing[] = await getListings(searchParams);
 
