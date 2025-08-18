@@ -10,7 +10,7 @@ interface Params {
 
 export async function DELETE(
   request: Request,
-  { params }: { params: Params},
+  { params }: { params: Promise<{ reservationId: string }>},
 ){
   const currentUser = await getCurrentUser();
 
