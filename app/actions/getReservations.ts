@@ -8,9 +8,7 @@ interface Params {
   userId?: string;
 }
 
-export interface Query {
-  [key: string]: number | string | Query;
-}
+export type Query  = Record<string, any>;
 
 export default async function getReservations(params: Params): Promise<ReservationWithListing[]> {
   try {
