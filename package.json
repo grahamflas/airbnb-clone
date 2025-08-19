@@ -3,10 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
     "build": "next build",
+    "dev": "next dev --turbopack",
+    "lint": "next lint",
     "start": "next start",
-    "lint": "next lint"
+    "typecheck:watch": "tsc --noEmit --watch",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.7",
