@@ -69,6 +69,7 @@ const RentModal = () => {
     [watchedLocation]
   );
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const setCustomValue = (id: string, value: any) => {
     setValue(id, value, {
       shouldDirty: true,
@@ -104,7 +105,7 @@ const RentModal = () => {
       setStep(STEPS.CATEGORY);
 
       rentModal.onClose();
-    } catch (error) {
+    } catch {
       toast.error("Something went wrong");
     } finally {
       setIsLoading(false);

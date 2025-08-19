@@ -6,6 +6,7 @@ import { CldUploadWidget } from "next-cloudinary";
 import { TbPhotoPlus } from "react-icons/tb";
 
 declare global {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   var cloudinary: any;
 }
 
@@ -15,6 +16,7 @@ interface Props {
 }
 
 const ImageUpload = ({ onChange, value }: Props) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleUpload = (result: any) => {
     onChange(result.info.secure_url);
   };

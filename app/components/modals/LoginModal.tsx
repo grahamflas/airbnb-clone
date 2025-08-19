@@ -62,7 +62,7 @@ const LoginModal = () => {
       if (result?.error) {
         toast.error(result.error);
       }
-    } catch (error) {
+    } catch {
       setIsLoading(false);
       toast.error("Something when wrong. Try again");
     }

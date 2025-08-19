@@ -32,6 +32,8 @@ const ReservationsClient = ({ currentUser, reservations }: Params) => {
       toast.success("Reservation cancelled");
 
       router.refresh();
+
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       toast.error(error?.response?.data?.error);
     } finally {

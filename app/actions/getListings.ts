@@ -81,7 +81,8 @@ export default async function getListings(params: IListingsParams) {
       where: query,
       orderBy: {createdAt: 'desc'}
     });
-  } catch (error: any) {
-    throw new Error(error);
+  } catch (error: unknown) {
+    console.log(error)
+    throw new Error("Something went wrong");
   }
 }

@@ -96,6 +96,7 @@ const SearchModal = () => {
     const url = queryString.stringifyUrl(
       {
         url: "/",
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         query: updatedQuery as Record<string, any>,
       },
       { skipNull: true }

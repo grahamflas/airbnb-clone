@@ -4,6 +4,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import queryString from "query-string";
 
 import type { IconType } from "react-icons";
+import { Query } from "../actions/getReservations";
 
 interface Props {
   description: string;
@@ -31,7 +32,7 @@ const CategoryBox = ({ description, icon: Icon, label, selected }: Props) => {
       currentQuery = queryString.parse(params.toString());
     }
 
-    const updatedQuery: any = {
+    const updatedQuery: Query = {
       ...currentQuery,
       category: label,
     };

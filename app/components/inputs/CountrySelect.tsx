@@ -28,7 +28,7 @@ const CountrySelect = ({ onChange, value }: Props) => {
         option: () => "text-lg",
       }}
       isClearable
-      formatOptionLabel={(option: any) => (
+      formatOptionLabel={(option) => (
         <div className="flex flex-row items-center gap-3">
           <div>{option.flag}</div>
 

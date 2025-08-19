@@ -22,7 +22,8 @@ export default async function getListingById(params: Params){
     }
 
     return listing;
-  } catch (error: any) {
-    throw new Error(error)
+  } catch (error: unknown) {
+    console.log(error)
+    throw new Error("Something went wrong")
   }
 }

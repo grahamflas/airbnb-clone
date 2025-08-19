@@ -8,6 +8,7 @@ interface Params {
   userId?: string;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type Query  = Record<string, any>;
 
 export default async function getReservations(params: Params): Promise<ReservationWithListing[]> {
@@ -44,7 +45,8 @@ export default async function getReservations(params: Params): Promise<Reservati
     });
 
     return reservations
-  } catch (error: any) {
-    throw new Error(error);
+  } catch (error: unknown) {
+    console.log(error)
+    throw new Error("Something went wrong");
   }
 }
