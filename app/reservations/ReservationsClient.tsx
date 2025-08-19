@@ -32,7 +32,7 @@ const ReservationsClient = ({ currentUser, reservations }: Params) => {
       toast.success("Reservation cancelled");
 
       router.refresh();
-    } catch (error) {
+    } catch (error: any) {
       toast.error(error?.response?.data?.error);
     } finally {
       setReservationToCancelId("");
