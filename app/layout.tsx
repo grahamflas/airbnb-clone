@@ -3,6 +3,7 @@ import { Nunito } from "next/font/google";
 
 import { Toaster } from "react-hot-toast";
 
+import ClientOnly from "./components/ClientOnly";
 import LoginModal from "./components/modals/LoginModal";
 import Navbar from "./components/navbar/Navbar";
 import RegisterModal from "./components/modals/RegisterModal";
@@ -32,17 +33,19 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={font.className}>
-        <Toaster />
+        <ClientOnly>
+          <Toaster />
 
-        <LoginModal />
+          <LoginModal />
 
-        <RegisterModal />
+          <RegisterModal />
 
-        <RentModal />
+          <RentModal />
 
-        <SearchModal />
+          <SearchModal />
 
-        <Navbar currentUser={currentUser} />
+          <Navbar currentUser={currentUser} />
+        </ClientOnly>
 
         <div className="pb-20 pt-28">{children}</div>
       </body>

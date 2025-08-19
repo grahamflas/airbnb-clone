@@ -1,3 +1,4 @@
+import ClientOnly from "@/app/components/ClientOnly";
 import EmptyState from "@/app/components/EmptyState";
 import ListingClient from "./ListingClient";
 
@@ -15,15 +16,21 @@ const ListingPage = async ({ params }: { params: Promise<Params> }) => {
   const reservations = await getReservations(await params);
 
   if (!listing) {
-    return <EmptyState />;
+    return (
+      <ClientOnly>
+        <EmptyState />
+      </ClientOnly>
+    );
   }
 
   return (
-    <ListingClient
-      currentUser={currentUser}
-      listing={listing}
-      reservations={reservations}
-    />
+    <ClientOnly>
+      <ListingClient
+        currentUser={currentUser}
+        listing={listing}
+        reservations={reservations}
+      />
+    </ClientOnly>
   );
 };
 
