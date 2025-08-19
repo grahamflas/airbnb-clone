@@ -6,9 +6,9 @@ import Logo from "./Logo";
 import Search from "./Search";
 import UserMenu from "./UserMenu";
 
-import { SafeUser } from "@/app/types";
+import { User } from "@/app/generated/prisma";
 interface Props {
-  currentUser?: SafeUser | null;
+  currentUser?: User | null;
 }
 
 const Navbar = ({ currentUser }: Props) => {

@@ -2,14 +2,15 @@
 
 import Image from "next/image";
 
-import { SafeUser } from "@/app/types";
+import HeartButton from "../HeartButton";
+import Heading from "../Heading";
+
+import { User } from "@/app/generated/prisma";
 
 import useCountries from "@/app/hooks/useCountries";
-import Heading from "../Heading";
-import HeartButton from "../HeartButton";
 
 interface Props {
-  currentUser?: SafeUser | null;
+  currentUser?: User | null;
   id: string;
   imageSrc: string;
   locationValue: string;

@@ -4,11 +4,10 @@ import Container from "../components/Container";
 import Heading from "../components/Heading";
 import ListingCard from "../components/listings/ListingCard";
 
-import { Listing } from "../generated/prisma";
-import { SafeUser } from "../types";
+import { Listing, User } from "../generated/prisma";
 
 interface Props {
-  currentUser?: SafeUser | null;
+  currentUser?: User | null;
   favorites: Listing[];
 }
 

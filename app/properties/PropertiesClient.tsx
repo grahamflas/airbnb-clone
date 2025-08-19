@@ -11,15 +11,14 @@ import Container from "../components/Container";
 import Heading from "../components/Heading";
 import ListingCard from "../components/listings/ListingCard";
 
-import { Listing, Reservation } from "../generated/prisma";
-import { SafeUser } from "../types";
+import { Listing, Reservation, User } from "../generated/prisma";
 
 export type ReservationWithListing = Reservation & {
   listing: Listing;
 };
 
 interface Props {
-  currentUser: SafeUser;
+  currentUser: User;
   listings: Listing[];
 }
 

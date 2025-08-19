@@ -12,10 +12,10 @@ import Heading from "../components/Heading";
 import ListingCard from "../components/listings/ListingCard";
 
 import type { ReservationWithListing } from "../trips/TripsClient";
-import { SafeUser } from "../types";
+import { User } from "../generated/prisma";
 
 interface Params {
-  currentUser?: SafeUser;
+  currentUser?: User;
   reservations: ReservationWithListing[];
 }
 

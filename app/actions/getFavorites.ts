@@ -2,12 +2,11 @@ import prisma from "@/app/libs/prismadb"
 
 import getCurrentUser from "./getCurrentUser"
 
-import { SafeUser } from "../types";
-import { Listing } from "../generated/prisma";
+import { Listing, User } from "../generated/prisma";
 
 export default async function getFavorites(): Promise<Listing[]> {
   try {
-    const currentUser: SafeUser | null = await getCurrentUser();
+    const currentUser: User | null = await getCurrentUser();
 
     if (!currentUser) {
       return [];

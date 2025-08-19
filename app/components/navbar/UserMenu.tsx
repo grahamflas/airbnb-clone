@@ -15,10 +15,10 @@ import useLoginModal from "@/app/hooks/useLoginModal";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 import useRentModal from "@/app/hooks/useRentModal";
 
-import { SafeUser } from "@/app/types";
+import { User } from "@/app/generated/prisma";
 
 interface Props {
-  currentUser?: SafeUser | null;
+  currentUser?: User | null;
 }
 
 const UserMenu = ({ currentUser }: Props) => {

@@ -1,14 +1,12 @@
 "use client";
 
-import { useMemo } from "react";
-
 import dynamic from "next/dynamic";
 
 import Avatar from "../Avatar";
 import ListingCategory from "./ListingCategory";
 
 import type { Category } from "../navbar/Categories";
-import { SafeUser } from "@/app/types";
+import { User } from "@/app/generated/prisma";
 
 import useCountries from "@/app/hooks/useCountries";
 
@@ -21,7 +19,7 @@ interface Props {
   guestCount: number;
   locationValue: string;
   roomCount: number;
-  user: SafeUser;
+  user: User;
 }
 
 const ListingInfo = ({

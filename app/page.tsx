@@ -4,15 +4,14 @@ import EmptyState from "./components/EmptyState";
 
 import getCurrentUser from "./actions/getCurrentUser";
 import getListings, { IListingsParams } from "./actions/getListings";
-import { Listing } from "./generated/prisma";
-import { SafeUser } from "./types";
+import { Listing, User } from "./generated/prisma";
 
 export default async function Home({
   searchParams,
 }: {
   searchParams: Promise<IListingsParams>;
 }) {
-  const currentUser: SafeUser | null = await getCurrentUser();
+  const currentUser: User | null = await getCurrentUser();
   const listings: Listing[] = await getListings(await searchParams);
 
   if (listings.length === 0) {

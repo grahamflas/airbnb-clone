@@ -1,12 +1,13 @@
 "use client";
 
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
-import { SafeUser } from "../types";
+
+import { User } from "../generated/prisma";
 
 import useFavorite from "../hooks/useFavorite";
 
 interface Props {
-  currentUser?: SafeUser | null;
+  currentUser?: User | null;
   listingId: string;
 }
 

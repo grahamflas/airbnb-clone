@@ -6,16 +6,15 @@ import { format } from "date-fns";
 
 import HeartButton from "../HeartButton";
 
-import { Listing, Reservation } from "@/app/generated/prisma";
+import { Listing, Reservation, User } from "@/app/generated/prisma";
 
 import useCountries from "@/app/hooks/useCountries";
-import { SafeUser } from "@/app/types";
 import Button from "../Button";
 
 interface Props {
   actionId?: string;
   actionLabel?: string;
-  currentUser?: SafeUser | null;
+  currentUser?: User | null;
   disabled?: boolean;
   listing: Listing;
   onAction?: (id: string) => void;

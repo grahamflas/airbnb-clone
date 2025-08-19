@@ -5,10 +5,10 @@ import toast from "react-hot-toast"
 
 import useLoginModal from "./useLoginModal"
 
-import { SafeUser } from "../types";
+import { User } from "../generated/prisma";
 
 interface IUseFavorite {
-  currentUser?: SafeUser | null;
+  currentUser?: User | null;
   listingId: string;
 }
 
