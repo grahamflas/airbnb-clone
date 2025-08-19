@@ -3,9 +3,9 @@ import { NextResponse } from "next/server";
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import prisma from "@/app/libs/prismadb"
 
-interface Params {
-  listingId?: string;
-}
+// interface Params {
+//   listingId?: string;
+// }
 
 // [TODO]: dry out these end points
 export async function POST(

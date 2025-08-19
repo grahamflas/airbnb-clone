@@ -4,9 +4,9 @@ import prisma from "@/app/libs/prismadb";
 
 import getCurrentUser from "@/app/actions/getCurrentUser";
 
-interface Params {
-  reservationId?: string;
-}
+// interface Params {
+//   reservationId?: string;
+// }
 
 export async function DELETE(
   request: Request,
